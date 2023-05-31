@@ -1,0 +1,27 @@
+---
+import Link from "../components/Link.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Page Not Found" description={"Not Found Page"}>
+  <div
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "center",
+      alignItems: "center",
+      gap: "var(--small-sm)",
+    }}
+  >
+    <h1 class="h1">Ooops! You are lost</h1>
+    <Link
+      href="/"
+      style="secondary"
+      text="Back Home"
+      icon={{
+        name: "tabler:home",
+        side: "right",
+      }}
+    />
+  </div>
+</Layout>

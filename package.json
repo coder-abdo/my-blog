@@ -9,7 +9,14 @@
     "preview": "astro preview",
     "astro": "astro"
   },
+  "browserslist": [
+    "defaults"
+  ],
   "dependencies": {
-    "astro": "^2.4.1"
+    "@astrojs/mdx": "^0.19.5",
+    "astro": "^2.4.1",
+    "astro-icon": "^0.8.0",
+    "postcss": "^8.4.24",
+    "postcss-preset-env": "^8.4.1"
   }
 }
