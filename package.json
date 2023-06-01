@@ -13,10 +13,12 @@
     "defaults"
   ],
   "dependencies": {
+    "@astrojs/image": "^0.16.9",
     "@astrojs/mdx": "^0.19.5",
-    "astro": "^2.4.1",
+    "astro": "^2.5.5",
     "astro-icon": "^0.8.0",
     "postcss": "^8.4.24",
-    "postcss-preset-env": "^8.4.1"
+    "postcss-preset-env": "^8.4.1",
+    "sharp": "^0.32.1"
   }
 }

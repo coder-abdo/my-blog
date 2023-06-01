@@ -1,0 +1,40 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "@astrojs/image/components";
+import { formatDate, slugify } from "../utils/utils";
+const { frontmatter } = Astro.props;
+const { title, description, date, category, author, image } = frontmatter;
+---
+
+<Layout {title} {description}>
+  <header>
+    <div class="contianer">
+      <small
+        ><a href={`/category/${slugify(category as string)}`} class="badge"
+          >{category}</a
+        ></small
+      >
+      <h1 class="h2">{title}</h1>
+      <p>
+        by <a href={`/author/${slugify(author as string)}`}>{author}</a> . {
+          formatDate(date)
+        }
+      </p>
+    </div>
+    <Image
+      src={image.src}
+      alt={image.title}
+      width={1200}
+      height={720}
+      fit="fill"
+      format="avif"
+      class="hero-image"
+    />
+  </header>
+  <div class="post-content">
+    <div class="content">
+      <slot />
+    </div>
+    <aside class="sidebar"></aside>
+  </div>
+</Layout>
