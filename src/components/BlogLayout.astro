@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { Image } from "@astrojs/image/components";
 import { formatDate, slugify } from "../utils/utils";
+import Categories from "./Categories.astro";
 const { frontmatter } = Astro.props;
 const { title, description, date, category, author, image } = frontmatter;
 ---
@@ -35,6 +36,11 @@ const { title, description, date, category, author, image } = frontmatter;
     <div class="content">
       <slot />
     </div>
-    <aside class="sidebar"></aside>
+    <div class="sidebar">
+      <aside class="container" aria-label="Blog Categories">
+        <h2 class="h3">Blog Categories</h2>
+        <Categories />
+      </aside>
+    </div>
   </div>
 </Layout>

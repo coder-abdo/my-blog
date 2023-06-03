@@ -618,3 +618,13 @@ header {
 .sidebar [aria-label="Blog categories"] {
   margin-block: 0;
 }
+@media (min-width: 480px) {
+  .about {
+    grid-template-columns: 1fr;
+  }
+}
+@media (min-width: 768px) {
+  .about {
+    grid-template-columns: 1fr 2fr;
+  }
+}
