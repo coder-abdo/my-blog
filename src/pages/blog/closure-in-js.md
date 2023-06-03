@@ -5,7 +5,7 @@ author: Abdelmonaem
 date: 2023-06-02
 description: A post describe what is the closure in javascript under the hood.
 image: { src: "/images/closure.png", title: "closure in js" }
-draft: false
+draft: true
 category: javascript
 ---
 

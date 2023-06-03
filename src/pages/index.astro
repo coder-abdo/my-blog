@@ -1,9 +1,69 @@
 ---
+import Link from "../components/Link.astro";
+import PostCard from "../components/PostCard.astro";
 import Layout from "../layouts/Layout.astro";
+import { formatBlogPosts } from "../utils/utils";
+const posts = await Astro.glob("./blog/*.md");
 ---
 
 <Layout title="Abdelmonaem Blog" description="Abdelmonaem Blog Home Page">
-  <main>
-    <h1>here is the main page</h1>
-  </main>
+  <section class="container about" aria-label="About Me">
+    <img src="/images/my-avatar.jpg" alt="my avatar" width="200" height="330" />
+    <div class="content">
+      <h1 class="h1">My Blog</h1>
+      <p>
+        Hi My Name Is Abdelmonaem Shahat highly skilled software engineer, with
+        a passion for developing robust and scalable software solutions. With
+        more than 5 years of experience in the field, I have become an expert in
+        a variety of programming languages and technologies, including
+        Javascript, Typescript, and Golang. With dedication to my craft is
+        evident in the high-quality work he delivers. I am takes pride in
+        writing clean, efficient, and well-documented code that is easy to
+        maintain and extend. I've ability to understand complex requirements and
+        break them down into manageable tasks makes him a valuable asset to any
+        team. In addition to my technical skills, I'm a great communicator and
+        collaborator. I enjoy working with others to solve problems and I always
+        willing to lend a helping hand. I've positive attitude and willingness
+        to learn new things make me a pleasure to work with. Whether I am
+        working on a small project or a large-scale application, I always
+        strives to deliver the best possible solution. I've attention to detail
+        and commitment to excellence have earned me a reputation as a reliable
+        and dependable software engineer. In my free time, I enjoy reading about
+        new technologies and experimenting with new programming languages. I
+        also enjoy spending time with my family and exploring the great
+        outdoors.
+      </p>
+      <Link
+        href="mailto:a.h2010.2007@gmail.com"
+        text="👋Say Hello"
+        style="secondary"
+        isFilled={false}
+        isBorderVisible={true}
+      />
+    </div>
+  </section>
+  <section class="container" aria-label="New Blog Posts">
+    <h2 class="h2">Blog Posts</h2>
+    <div class="post-container">
+      {
+        posts.map(
+          (post: {
+            frontmatter: {
+              layout: string;
+              title: string;
+              author: string;
+              date: string;
+              description: string;
+              image: { src: string; title: string };
+              draft: boolean;
+              category: string;
+            };
+            url: string;
+          }) => {
+            return <PostCard {post} />;
+          }
+        )
+      }
+    </div>
+  </section>
 </Layout>

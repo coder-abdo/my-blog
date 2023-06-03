@@ -1,0 +1,60 @@
+---
+import { Image } from "@astrojs/image/components";
+import { formatDate, slugify } from "../utils/utils";
+import Link from "./Link.astro";
+
+type Timage = {
+  src: string;
+  title: string;
+};
+type Tfrontmatter = {
+  layout: string;
+  title: string;
+  author: string;
+  date: string;
+  description: string;
+  image: Timage;
+  draft: boolean;
+  category: string;
+};
+type TPost = {
+  frontmatter: Tfrontmatter;
+  url: string;
+};
+type Props = {
+  post: TPost;
+};
+const { post } = Astro.props as Props;
+const { author, title, date, description, image, category } = post.frontmatter;
+---
+
+<article class="card">
+  <small>
+    <a href={`/category/${slugify(category)}`} class="badge">{category}</a>
+  </small>
+  <a href={post.url} aria-hidden="true" tabindex="-1">
+    <Image
+      src={image.src}
+      alt={image.title}
+      width={400}
+      height={250}
+      format="webp"
+      quality={80}
+      aspectRatio="4:1"
+    />
+  </a>
+  <div class="content">
+    <div>
+      <h2 class="h3">
+        <a href={post.url}>{title}</a>
+      </h2>
+      <small>
+        by <a href={`/author/${slugify(author)}`}>{author}</a> . {
+          formatDate(date)
+        }
+      </small>
+    </div>
+    <p>{description}</p>
+    <Link href={post.url} style="secondary" text="Read More" />
+  </div>
+</article>

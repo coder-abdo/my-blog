@@ -5,7 +5,7 @@ author: Abdelmonaem
 date: 2023-06-04
 description: A post describe how to center element in CSS with different methods.
 image: { src: "/images/css.png", title: "centering in css" }
-draft: false
+draft: true
 category: CSS
 ---
 
