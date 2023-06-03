@@ -1,8 +1,11 @@
 ---
 import PostCard from "../../components/PostCard.astro";
 import Layout from "../../layouts/Layout.astro";
+import { formatBlogPosts } from "../../utils/utils";
 
 const posts = await Astro.glob("./*.md");
+const filteredPosts =
+  formatBlogPosts(posts).length > 0 ? formatBlogPosts(posts) : posts;
 ---
 
 <Layout title="My Blog" description="Blog Posts">
@@ -10,7 +13,7 @@ const posts = await Astro.glob("./*.md");
     <h1 class="h1">Blog Posts</h1>
     <div class="post-container">
       {
-        posts.map(
+        filteredPosts.map(
           (post: {
             frontmatter: {
               layout: string;
